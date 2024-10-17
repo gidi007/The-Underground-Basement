@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Underground Basement</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            opacity: 0;
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: floatAnimation 6s ease-in-out infinite;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        .parallax-container {
+            perspective: 1000px;
+        }
+
+        .parallax-element {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+        }
+
+        .zoom-on-scroll {
+            transition: transform 0.3s ease-out;
+        }
+
+        .zoom-on-scroll:hover {
+            transform: scale(1.05);
+        }
+
+        .bg-custom-pattern {
+            background: 
+                radial-gradient(circle at 25px 25px, rgba(255, 0, 0, 0.2) 2%, transparent 0%),
+                radial-gradient(circle at 75px 75px, rgba(255, 0, 0, 0.2) 2%, transparent 0%);
+            background-size: 100px 100px;
+            animation: gradientFlow 20s linear infinite;
+        }
+
+        /* Custom SVG Patterns */
+        .african-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='rgba(255,0,0,0.1)'/%3E%3C/svg%3E");
+        }
+
+        /* Scroll-triggered animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover effects */
+        .card-hover {
+            transition: all 0.3s ease-out;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.1);
+        }
+
+        /* Dynamic border animation */
+        .border-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .border-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                rgba(255, 0, 0, 0.2) 25%,
+                transparent 50%
+            );
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center bg-custom-pattern overflow-hidden parallax-container">
+        <div class="absolute inset-0 african-pattern opacity-20"></div>
+        
+        <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-20 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg">
+            <div class="text-2xl font-bold animate-fade-in-up">
+                <span class="gradient-text">UB</span>
+            </div>
+            <div class="space-x-8">
+                <a href="#events" class="hover:text-red-600 transition-all transform hover:scale-110 inline-block animate-fade-in-up delay-100">Events</a>
+                <a href="#shows" class="hover:text-red-600 transition-all transform hover:scale-110 inline-block animate-fade-in-up delay-200">Shows</a>
+                <a href="#radar" class="hover:text-red-600 transition-all transform hover:scale-110 inline-block animate-fade-in-up delay-300">Underground Radar</a>
+                <a href="#heritage" class="hover:text-red-600 transition-all transform hover:scale-110 inline-block animate-fade-in-up delay-400">Heritage</a>
+            </div>
+        </nav>
+        
+        <div class="text-center z-10 px-4 parallax-element">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 animate-scale-in">
+                The Underground<br/>
+                <span class="gradient-text">Basement</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
+                Where African Heritage Meets Contemporary Culture
+            </p>
+            <button class="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-110 animate-fade-in-up delay-300 border-glow">
+                Explore The Underground
+            </button>
+        </div>
+
+        <!-- Abstract SVG Background -->
+        <svg class="absolute bottom-0 left-0 w-full h-32 animate-float" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L48 8.875C96 17.75 192 35.5 288 44.375C384 53.25 480 53.25 576 44.375C672 35.5 768 17.75 864 26.625C960 35.5 1056 71 1152 71C1248 71 1344 35.5 1392 17.75L1440 0V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V0Z" fill="rgba(220, 38, 38, 0.1)"/>
+        </svg>
+        <svg class="absolute bottom-0 left-0 w-full h-32 animate-float" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L48 8.875C96 17.75 192 35.5 288 44.375C384 53.25 480 53.25 576 44.375C672 35.5 768 17.75 864 26.625C960 35.5 1056 71 1152 71C1248 71 1344 35.5 1392 17.75L1440 0V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V0Z" fill="rgba(220, 38, 38, 0.1)"/>
+        </svg>
+    </header>
+
+    <!-- Events Master Section -->
+<section class="relative py-24 px-6 bg-gray-950 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-800 opacity-90"></div>
+  
+    <!-- Parallax Background -->
+    <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/?festival,celebration')] bg-cover bg-center opacity-20 animate-pulse"></div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-center gradient-text tracking-tight reveal-on-scroll">
+        Curated <span class="text-red-500">Experiences</span>
+      </h2>
+      <p class="text-lg text-center mb-16 text-gray-300 max-w-2xl mx-auto">
+        Immerse yourself in events that blend tradition with innovation.
+      </p>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Event Card 1: Talk Shows -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="talk-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="30" cy="30" r="20" fill="rgba(255, 255, 255, 0.3)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#talk-pattern)" />
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4">
+              <h3 class="text-2xl font-semibold text-white">Talk Shows</h3>
+              <p class="text-sm text-gray-300">Engaging discussions on culture, art, and heritage</p>
+              <a href="#" class="mt-2 inline-block text-red-400 hover:text-white font-bold tracking-wide transition-colors">Watch Now →</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Event Card 2: Fashion -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform delay-100">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="fashion-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
+                <path d="M0 40L40 80L80 40L40 0Z" fill="rgba(34, 197, 94, 0.3)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#fashion-pattern)" />
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4">
+              <h3 class="text-2xl font-semibold text-white">Fashion</h3>
+              <p class="text-sm text-gray-300">Where traditional meets contemporary style</p>
+              <a href="#" class="mt-2 inline-block text-green-400 hover:text-white font-bold tracking-wide transition-colors">Explore Fashion →</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Event Card 3: Underground Radar -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform delay-200">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="radar-pattern" width="70" height="70" patternUnits="userSpaceOnUse">
+                <circle cx="35" cy="35" r="30" fill="rgba(59, 130, 246, 0.4)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#radar-pattern)" />
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4">
+              <h3 class="text-2xl font-semibold text-white">Underground Radar</h3>
+              <p class="text-sm text-gray-300">Discovering tomorrow's stars today</p>
+              <a href="#" class="mt-2 inline-block text-blue-400 hover:text-white font-bold tracking-wide transition-colors">Listen Now →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- Featured Section -->
+<section class="py-20 px-4 bg-gray-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-gray-900 p-6 rounded-lg card-hover reveal-on-scroll">
+        <div class="h-48 mb-4 overflow-hidden rounded">
+          <svg class="w-full h-full" viewBox="0 0 200 200">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <circle cx="100" cy="100" r="50" fill="#dc2626" opacity="0.6">
+              <animate attributeName="r" values="50;60;50" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">Events</h3>
+        <p class="mb-4">Curated experiences that blend tradition with innovation.</p>
+        <a href="#" class="text-sm text-red-600 hover:underline transform hover:translate-x-2 inline-block transition-transform">Discover Events →</a>
+      </div>
+  
+      <!-- Card 2 -->
+      <div class="bg-gray-900 p-6 rounded-lg card-hover reveal-on-scroll">
+        <div class="h-48 mb-4 overflow-hidden rounded">
+          <svg class="w-full h-full" viewBox="0 0 200 200">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <polygon points="50,15 100,85 0,85" fill="#22c55e" opacity="0.6">
+              <animate attributeName="points" values="50,15;100,50;50,15" dur="2.5s" repeatCount="indefinite"/>
+            </polygon>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">Workshops</h3>
+        <p class="mb-4">Interactive sessions designed to expand your skills and creativity.</p>
+        <a href="#" class="text-sm text-green-500 hover:underline transform hover:translate-x-2 inline-block transition-transform">Join Workshops →</a>
+      </div>
+  
+      <!-- Card 3 -->
+      <div class="bg-gray-900 p-6 rounded-lg card-hover reveal-on-scroll">
+        <div class="h-48 mb-4 overflow-hidden rounded">
+          <svg class="w-full h-full" viewBox="0 0 200 200">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <line x1="10" y1="10" x2="190" y2="190" stroke="#3b82f6" stroke-width="5">
+              <animate attributeName="x2" values="190;10;190" dur="2s" repeatCount="indefinite"/>
+            </line>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">Networking</h3>
+        <p class="mb-4">Connect with industry experts and like-minded individuals.</p>
+        <a href="#" class="text-sm text-blue-400 hover:underline transform hover:translate-x-2 inline-block transition-transform">Explore Networks →</a>
+      </div>
+  
+      <!-- Card 4 -->
+      <div class="bg-gray-900 p-6 rounded-lg card-hover reveal-on-scroll">
+        <div class="h-48 mb-4 overflow-hidden rounded">
+          <svg class="w-full h-full" viewBox="0 0 200 200">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <path d="M100 10 Q140 90 100 190 Q60 90 100 10 Z" fill="#ec4899" opacity="0.6">
+              <animate attributeName="d" values="M100 10 Q140 90 100 190 Q60 90 100 10 Z; M80 20 Q120 80 80 180 Q40 80 80 20 Z" dur="3s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">Performances</h3>
+        <p class="mb-4">Experience electrifying shows from top artists and performers.</p>
+        <a href="#" class="text-sm text-pink-500 hover:underline transform hover:translate-x-2 inline-block transition-transform">Watch Performances →</a>
+      </div>
+    </div>
+  </section>
+  
+<!-- Events Master Section -->
+<section class="relative py-24 px-6 bg-gray-950 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-800 opacity-90"></div>
+  
+    <!-- Parallax Background -->
+    <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/?festival,celebration')] bg-cover bg-center opacity-20 animate-pulse"></div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-center gradient-text tracking-tight reveal-on-scroll">
+        Curated <span class="text-red-500">Experiences</span>
+      </h2>
+      <p class="text-lg text-center mb-16 text-gray-300 max-w-2xl mx-auto">
+        Immerse yourself in events that blend tradition with innovation.
+      </p>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Event Card 1: Talk Shows -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform">
+          <div class="h-64 w-full overflow-hidden">
+            <svg class="w-full h-full" viewBox="0 0 400 300">
+              <defs>
+                <linearGradient id="talk-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(220, 38, 38, 0.5); stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:rgba(0, 0, 0, 0.5); stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#talk-gradient)" />
+              <text x="200" y="150" text-anchor="middle" fill="white" font-size="24" class="fade-in-animation">Talk Shows</text>
+              <circle cx="200" cy="150" r="80" fill="none" stroke="rgba(255, 0, 0, 0.5)" stroke-width="4">
+                <animate attributeName="r" from="80" to="100" dur="2s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="absolute bottom-4 left-4">
+                <h3 class="text-2xl font-semibold text-white">Talk Shows</h3>
+                <p class="text-sm text-gray-300">Engaging discussions on culture, art, and heritage</p>
+                <a href="#" class="mt-2 inline-block text-red-400 hover:text-white font-bold tracking-wide transition-colors">Watch Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Event Card 2: Fashion -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform delay-100">
+          <div class="h-64 w-full overflow-hidden">
+            <svg class="w-full h-full" viewBox="0 0 400 300">
+              <defs>
+                <linearGradient id="fashion-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(34, 197, 94, 0.5); stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:rgba(0, 0, 0, 0.5); stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#fashion-gradient)" />
+              <text x="200" y="150" text-anchor="middle" fill="white" font-size="24" class="fade-in-animation">Fashion</text>
+              <polygon points="100,100 200,0 300,100 200,200" fill="rgba(34, 197, 94, 0.3)">
+                <animateTransform attributeName="transform" type="rotate" from="0 200 100" to="360 200 100" dur="4s" repeatCount="indefinite" />
+              </polygon>
+            </svg>
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="absolute bottom-4 left-4">
+                <h3 class="text-2xl font-semibold text-white">Fashion</h3>
+                <p class="text-sm text-gray-300">Where traditional meets contemporary style</p>
+                <a href="#" class="mt-2 inline-block text-green-400 hover:text-white font-bold tracking-wide transition-colors">Explore Fashion →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Event Card 3: Underground Radar -->
+        <div class="relative group rounded-lg overflow-hidden card-hover reveal-on-scroll shadow-lg transform hover:scale-105 transition-transform delay-200">
+          <div class="h-64 w-full overflow-hidden">
+            <svg class="w-full h-full" viewBox="0 0 400 300">
+              <defs>
+                <linearGradient id="radar-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(59, 130, 246, 0.5); stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:rgba(0, 0, 0, 0.5); stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#radar-gradient)" />
+              <text x="200" y="150" text-anchor="middle" fill="white" font-size="24" class="fade-in-animation">Underground Radar</text>
+              <rect x="150" y="100" width="100" height="100" fill="none" stroke="rgba(59, 130, 246, 0.6)" stroke-width="4">
+                <animate attributeName="x" from="150" to="250" dur="3s" repeatCount="indefinite" />
+              </rect>
+            </svg>
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="absolute bottom-4 left-4">
+                <h3 class="text-2xl font-semibold text-white">Underground Radar</h3>
+                <p class="text-sm text-gray-300">Discovering tomorrow's stars today</p>
+                <a href="#" class="mt-2 inline-block text-blue-400 hover:text-white font-bold tracking-wide transition-colors">Listen Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .fade-in-animation {
+      animation: fade-in 0.6s ease forwards;
+    }
+  </style>
+  
+
+   <!-- Latest Shows Section with Dynamic Grid -->
+<section class="py-20 px-4 bg-gray-900 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center reveal-on-scroll">
+        Latest <span class="gradient-text">Shows</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Show Card 1 -->
+        <div class="relative group card-hover reveal-on-scroll delay-100">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="tribal1" patternUnits="userSpaceOnUse" width="60" height="60">
+                <path d="M30 0L60 30L30 60L0 30z" fill="rgba(220, 38, 38, 0.2)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#tribal1)" />
+            <text x="200" y="150" text-anchor="middle" fill="white" font-size="24">
+              Heritage Talk
+            </text>
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg transform group-hover:scale-105">
+            <div class="absolute bottom-0 p-4">
+              <h3 class="text-xl font-bold">Heritage Talk</h3>
+              <p class="text-sm">Exploring ancient traditions</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Show Card 2 -->
+        <div class="relative group card-hover reveal-on-scroll delay-200">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="tribal2" patternUnits="userSpaceOnUse" width="40" height="40">
+                <circle cx="20" cy="20" r="15" fill="rgba(34, 197, 94, 0.3)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#tribal2)" />
+            <text x="200" y="150" text-anchor="middle" fill="white" font-size="24">
+              Rhythm Night
+            </text>
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg transform group-hover:scale-105">
+            <div class="absolute bottom-0 p-4">
+              <h3 class="text-xl font-bold">Rhythm Night</h3>
+              <p class="text-sm">Dance to the beats of the night</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Show Card 3 -->
+        <div class="relative group card-hover reveal-on-scroll delay-300">
+          <svg class="w-full h-64" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="tribal3" patternUnits="userSpaceOnUse" width="80" height="80">
+                <path d="M40 0L80 40L40 80L0 40z" fill="rgba(59, 130, 246, 0.3)" />
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#tribal3)" />
+            <text x="200" y="150" text-anchor="middle" fill="white" font-size="24">
+              Art Expressions
+            </text>
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg transform group-hover:scale-105">
+            <div class="absolute bottom-0 p-4">
+              <h3 class="text-xl font-bold">Art Expressions</h3>
+              <p class="text-sm">A journey through visual arts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- Interactive Newsletter Section -->
+    <section class="py-20 px-4 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-6 reveal-on-scroll">
+                Join The <span class="gradient-text">Underground</span>
+            </h2>
+            <p class="mb-8 reveal-on-scroll delay-100">Stay updated with our latest shows, events, and underground artist discoveries</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center reveal-on-scroll delay-200">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    class="px-6 py-3 rounded-full bg-gray-900 border border-gray-700 focus:border-red-600 outline-none transform hover:scale-105 transition-all"
+                />
+                <button class="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-110 border-glow">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+        
+        <!-- Background Animation -->
+        <svg class="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 400 400">
+            <rect width="400" height="400" fill="url(#tribal1)">
+                <animate attributeName="opacity" values="0.1;0.2;0.1" dur="4s" repeatCount="indefinite"/>
+            </rect>
+        </svg>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 py-12 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+            <!-- [Footer content remains similar but with added hover animations] -->
+        </div>
+        
+        <!-- Footer Background Pattern -->
+        <svg class="absolute bottom-0 left-0 w-full h-full opacity-5" viewBox="0 0 400 400">
+            <pattern id="footerPattern" patternUnits="userSpaceOnUse" width="40" height="40">
+                <path d="M0 0L20 20L0 40" stroke="rgba(220, 38, 38, 0.3)" fill="none"/>
+            </pattern>
+            <rect width="400" height="400" fill="url(#footerPattern)"/>
+        </svg>
+    </footer>
+<!-- Footer -->
+<footer class="bg-gray-900 py-12 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+            <h3 class="text-xl font-bold mb-4">The Underground Basement</h3>
+            <p class="text-gray-400">Celebrating African heritage through contemporary expression</p>
+        </div>
+        <div>
+            <h4 class="font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-red-600">About Us</a></li>
+                <li><a href="#" class="hover:text-red-600">Events</a></li>
+                <li><a href="#" class="hover:text-red-600">Shows</a></li>
+                <li><a href="#" class="hover:text-red-600">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold mb-4">Connect</h4>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-red-600">Instagram</a></li>
+                <li><a href="#" class="hover:text-red-600">Twitter</a></li>
+                <li><a href="#" class="hover:text-red-600">YouTube</a></li>
+                <li><a href="#" class="hover:text-red-600">Spotify</a></li>
+            </ul>
+        </div>
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            parallaxElements.forEach(element => {        const depth = element.getAttribute('data-depth') || 20;
+                const offsetX = mouseX * depth;
+                const offsetY = mouseY * depth;
+
+                element.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
