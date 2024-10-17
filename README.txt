@@ -57,7 +57,7 @@ Clone this repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/underground-basement.git
+git clone https://github.com/gidi007/underground-basement.git
 cd underground-basement
 Open the index.html in your browser:
 
@@ -96,5 +96,6 @@ Questions, feedback, or collaborations? Reach out to us:
 
 Email: support@underground-basement.com
 Twitter: @underground_basement
-Instagram: @underground_basement, Created by   Gideon Bawa || FullStack Developer
+Instagram: @underground_basement, 
+Created by   Gideon Bawa || FullStack Developer
 🔥 Let’s Make the Underground Heard! 🔥
